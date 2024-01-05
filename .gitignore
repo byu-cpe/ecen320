@@ -1,0 +1,5 @@
+_0site/*
+.sass-cache/*
+Gemfile.lock
+old/*
+.jekyll-cache

@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -z "$1" ] && { echo "Usage: ./upload <username>"; exit 1; }
+rsync -rlpu -vz $2 $3 -f 'P sp20' -f 'P .dont_delete_this_directory' --chmod=D2770,F0660 --groupmap=*:ecen220wiki _0site/ $1@ssh.et.byu.edu:groups/ecen220wiki/www

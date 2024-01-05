@@ -1,0 +1,30 @@
+- name: Bryan Despain 
+  handle: despain
+  color: 
+  zoom: https://byu.zoom.us/j/2088094883?pwd=Y0tjV1c0WHM3QVdNcjh2cjQvRjZpZz09
+  hours:
+      - hour:
+        day: 99
+        start_time: 11
+        end_time: 12
+
+- name: Christian Hales 
+  handle: hales
+  color: 
+  zoom: https://zoom.us/j/8357408817?pwd=bkRTUWpqdlNwZ1NORy9aYTVjRmpkQT09
+  hours:
+      - hour:
+        day: 99
+        start_time: 11
+        end_time: 12
+
+- name: Prof Lloyd
+  handle: lloyd
+  color: 
+  zoom: https://byu.zoom.us/j/5234821195
+  hours:
+      - hour:
+        day: 99
+        start_time: 11
+        end_time: 12
+

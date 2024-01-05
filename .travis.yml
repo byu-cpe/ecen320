@@ -1,0 +1,16 @@
+dist: bionic
+language: ruby
+
+
+jobs:
+  include:
+    - name: Build
+      script:
+        - bundle exec jekyll build
+    - name: Links
+      script:
+        - bundle exec jekyll build
+        - bundle exec htmlproofer --alt_ignore="*" --empty_alt_ignore --allow-hash-href ./_0site
+        
+
+    
