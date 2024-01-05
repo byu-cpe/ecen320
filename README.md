@@ -1,3 +1,15 @@
+**Note**:
+This repository was copied from the [ECEN 220]() repository. 
+The following steps were used to create this initial repository:
+```
+# See: https://stackoverflow.com/questions/6613166/how-to-duplicate-a-git-repository-without-forking
+# Create an emptp ecen320 repository
+cd ecen320
+git init
+git fetch --depth=1 -n git@github.com:byu-cpe/ECEn-220.git
+git reset --hard $(git commit-tree FETCH_HEAD^{tree} -m "initial commit")
+```
+
 # Overview
 The purpose of this project is to provide a template for a class webpage that is easy to customize and uses the latest in computing technologies.  Unlike most wiki-style systems, this webpage does NOT use PHP, thereby avoiding problems with that when running on University resources where it may be restricted.  Being based on Jekyll, the resulting web page to come out of this project is a static HTML webpage which is simple to deploy anywhere you want.  
 
