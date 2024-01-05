@@ -13,11 +13,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "ECEn 220: Fundamentals of Digital Systems"
+title: "ECEn 320: Fundamentals of Digital Systems"
 class_name: Fundamentals of Digital Systems
-class_number: ECEn 220
+class_number: ECEn 320
 email: scott_lloyd@byu.edu
-description: This is the lab website for the ECEn 220 course.
+description: This is the lab website for the ECEn 320 course.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: pretty

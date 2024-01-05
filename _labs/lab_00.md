@@ -5,7 +5,7 @@ title: Getting Started
 lab: Start
 ---
 
-Welcome to the 220 Lab!!!
+Welcome to the 320 Lab!!!
 
 This is where you put into action all the design techniques and knowledge you have acquired in class.
 
