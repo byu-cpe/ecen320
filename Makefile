@@ -4,8 +4,11 @@ develop:
 dbuild:
 	docker run --rm --volume="$$PWD:/srv/jekyll" -it jekyll/jekyll:4.0 jekyll build
 
+# See https://github.com/gjtorikian/html-proofer for options
 check_links: build
-	bundle exec htmlproofer --alt_ignore="*" --empty_alt_ignore --url-ignore "/diglabqueue.groups.et.byu.net/,/ecen220wiki.groups.et.byu.net/" --allow-hash-href ./_0site
+	bundle exec htmlproofer --allow_missing_href true --ignore_empty_alt true --ignore_missing_alt true --enforce_https false --swap_urls "^\/ecen323:" --ignore_status_codes "0,200,301,302,403" ./_site
+#check_links: build
+#	bundle exec htmlproofer --alt_ignore="*" --empty_alt_ignore --url-ignore "/diglabqueue.groups.et.byu.net/,/ecen220wiki.groups.et.byu.net/" --allow-hash-href ./_0site
 
 serve:
 	bundle exec jekyll serve
