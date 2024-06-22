@@ -1,7 +1,7 @@
-# Additional README for ECEn-220
+# Additional README for ECEn-320
 The `README.md` file was inherited from the original https://github.com/byu-cpe/ClassWebPages project.  It contains info on customizing that project to a specific class's web page.
 
-This `README_ECEn220.md` is additional info for **this** version of the web pages.
+This `README_ECEn320.md` is additional info for **this** version of the web pages.
 
 ## Installing Docker
 [These instructions](https://runnable.com/docker/install-docker-on-macos) were helpful to install docker on a Mac.
