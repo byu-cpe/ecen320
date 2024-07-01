@@ -1,5 +1,6 @@
 # Additional README for ECEn-320
-The `README.md` file was inherited from the original https://github.com/byu-cpe/ClassWebPages project.  It contains info on customizing that project to a specific class's web page.
+The `README.md` file was inherited from the original https://github.com/byu-cpe/ClassWebPages project.
+It contains info on customizing that project to a specific class's web page.
 
 This `README_ECEn320.md` is additional info for **this** version of the web pages.
 
@@ -22,25 +23,27 @@ In the end, removing Gemfile.lock solved the problem.  Must have been left over 
 ## Change of _site Location
 I kept mistakenly editing the files in the `_site` directory since it was out in the middle of my file listing.  
 
-So, I changed its location to `_0site` to get it out of the way.  It almost never causes problems but every once in a while something will be expecting `_site` instead.  Locations that had to change to accomodate this include:
-
+So, I changed its location to `_0site` to get it out of the way.  It almost never causes problems but every once in a while something will be expecting `_site` instead.  Locations that had to change to accommodate this includes:
 * `config.yml`
 * `Makefile`
 * `.gitignore`
 
 ## Link Checking
-There is a link checking capability that helps find broken links.  Instructions are in the `LINKCHECK.md` file.  Once installed, it can be run automatically.  
+There is a link checking capability that helps find broken links.
+Instructions are in the `LINKCHECK.md` file.  Once installed, it can be run automatically.  
 
 It could even be put into a Travis-CI check (haven't done that yet).
 
 ## Videos on Youtube
-The decision was made to never put videos into this repo.  Rather they are all at Youtube.
+The decision was made to never put videos into this repo.
+Rather they are all at Youtube.
 
 There is an account at Youtube with this login info:
 * byuecen220
     * XC7A35T-1CPG236C
 
-The videos all go into that channel.  We then use the "Embed" link info in our webpage.  
+The videos all go into that channel.
+We then use the "Embed" link info in our webpage.  
 
 NOTE: if you put "?rel=0" at the end of a video link then when the video is done playing it will NOT put up a screen of suggested follow-on videos to watch (which is good since the suggested videos may not be appropriate).
 
