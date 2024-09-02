@@ -1,3 +1,5 @@
+# ECEN 320 Web Page
+
 This is the repository for the ECEN 320 web pages.
 This repository was copied from the [ECEN 220](https://github.com/byu-cpe/ECEn-220) repository. 
 The following steps were used to create this initial repository:
@@ -44,5 +46,6 @@ This initial repository also contains a number of historical 'unused' labs:
 * [Simulation Lab](https://github.com/byu-cpe/ecen320/blob/Initial/unusedPages/lab_sim.md)
 * [Pong 1](https://github.com/byu-cpe/ecen320/blob/Initial/unusedPages/pong_1.md) and [Pong 2](https://github.com/byu-cpe/ecen320/blob/Initial/unusedPages/pong_2.md)
 
-### Other Resources
+# Related Resources
 
+* [ECEN 220 Lab Resources](https://github.com/byu-cpe/ecen220_labs): Contains solutions and resources for ECEN 220 labs that are not part of the published web page

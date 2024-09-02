@@ -1,11 +1,11 @@
 ---
 layout: page
 toc: true
-title: Board Intro
-lab: Board
+title: Basys3 Introduction
+lab: Basys3
 ---
 
-In this lab you will familiarize yourself with digital numbers, digital systems, and applications of digital systems by experimenting with the digital FPGA development board that you will use throughout the semester.
+In this lab you will familiarize yourself with digital numbers, digital systems, and applications of digital systems by experimenting with the Basys3 FPGA development board that you will use throughout the semester.
 
 <span style="color:red;">The average time to complete this lab is 1 hour.</span>
 
@@ -14,13 +14,22 @@ In this lab you will familiarize yourself with digital numbers, digital systems,
 * Learn about simple logic equations, binary numbers, and applications of digital systems.
 
 # Exercise #1 - Introduction to the Basys 3 Development Board
-During the course of the semester you will build various digital systems using digital logic. You will complete these using the **[Basys 3](https://reference.digilentinc.com/reference/programmable-logic/basys-3/start)** development board. You will be using this board throughout the semester so it is important to familiarize yourself with the board and learn how to use it. In this exercise, you will use the Basys 3 development board to explore a variety of digital system functions.
+
+During the course of the semester you will build various digital systems using digital logic. 
+You will complete these using the **[Basys 3](https://reference.digilentinc.com/reference/programmable-logic/basys-3/start)** development board. 
+You will be using this board throughout the semester so it is important to familiarize yourself with the board and learn how to use it. 
+In this exercise, you will use the Basys 3 development board to explore a variety of digital system functions.
 
 A picture of this board is shown below -- you should have purchased your own board for use in this class.
 
 ![](https://reference.digilentinc.com/_media/reference/programmable-logic/basys-3/basys-3-2.png)
 
-In the center of this board is an **Integrated Circuit** (IC) device called a **Field Programmable Gate Array** or FPGA (this is the square device labeled **ARTIX-7**). This FPGA device is the heart of the board and contains the programmable digital logic that you will use in most of your lab exercises. An FPGA device is a programmable digital circuit that can be configured to perform many different functions based on the user's digital design. You will be creating digital circuit designs during the semester and placing these circuits onto the FPGA device. The circuit that is configured onto the FPGA is defined in a file called a **bitstream**. These files are created by software from the manufacturer of the FPGA. You will be creating your own circuit bitstreams throughout the semester, but not in this lab.
+In the center of this board is an **Integrated Circuit** (IC) device called a **Field Programmable Gate Array** or FPGA (this is the square device labeled **ARTIX-7**). 
+This FPGA device is the heart of the board and contains the programmable digital logic that you will use in most of your lab exercises. 
+An FPGA device is a programmable digital circuit that can be configured to perform many different functions based on the user's digital design. 
+You will be creating digital circuit designs during the semester and placing these circuits onto the FPGA device. 
+The circuit that is configured onto the FPGA is defined in a file called a **bitstream**. 
+These files are created by software from the manufacturer of the FPGA. You will be creating your own circuit bitstreams throughout the semester, but not in this lab.
 
 The following page contains a video giving an overview of this Basys 3 board: [Overview of the Basys 3 Board]({% link tutorials/lab_01/03_basys3.md %}). Watch the video.
 
@@ -31,7 +40,11 @@ Now, check to make sure the blue jumpers are set as shown in the [Basys 3 jumper
 
 <span style="color:red">What is the proper jumper setting of Jumper JP1?</span>
 
-Now, connect the Basys 3 board to your host computer and turn on its power using the switch in the top left corner of the board. When you first turn the board on, the FPGA device will be programmed with a configuration file for a digital circuit that is saved on the board's memory. This digital circuit implements a number of functions on the seven-segment display, switches, buttons, and VGA display. Once the FPGA has been configured (as indicated by the **DONE** LED), the circuit is operational. Answer the following questions about the functionality of this digital circuit:
+Now, connect the Basys 3 board to your host computer and turn on its power using the switch in the top left corner of the board. 
+When you first turn the board on, the FPGA device will be programmed with a configuration file for a digital circuit that is saved on the board's memory. 
+This digital circuit implements a number of functions on the seven-segment display, switches, buttons, and VGA display. 
+Once the FPGA has been configured (as indicated by the **DONE** LED), the circuit is operational. 
+Answer the following questions about the functionality of this digital circuit:
 
 <span style="color:red">What do you see on the seven-segment displays?</span>
 
@@ -48,7 +61,10 @@ What does “FPGA” stand for?
 -->
 
 # Exercise #2 - Digital Logic and Binary Numbers
-In this next exercise, you will configure the FPGA with a different circuit. To use and experiment with this new circuit, you need to load [this configuration, or bit, file]({% link resources/example_bitfiles/basys3byuuserdemo.bit %}) onto the FPGA. You will be loading bit files on the the FPGA for **every** lab each week. You will be creating your own bit files in future lab assignments from the circuits you design.
+
+In this next exercise, you will configure the FPGA with a different circuit. 
+To use and experiment with this new circuit, you need to load [this configuration, or bit, file]({% link resources/example_bitfiles/basys3byuuserdemo.bit %}) onto the FPGA. You will be loading bit files on the the FPGA for **every** lab each week. 
+You will be creating your own bit files in future lab assignments from the circuits you design.
 
 In this case, download the above bitfile onto your computer using whatever mechanism your browser supports.
 
@@ -92,10 +108,13 @@ The NEXYS4 board also has two \*\*tri-color LEDs\*\* (labelled LD17 and LD 16 on
 
 \^ SW6 \^ SW5 \^ SW4 \^ LED Color \^ | 0 | 0 | 0 | | | 0 | 0 | 1 | | | 0
 | 1 | 0 | | | 0 | 1 | 1 | | | 1 | 0 | 0 | | | 1 | 0 | 1 | | | 1 | 1 | 0
-| | | 1 | 1 | 1 | |-->
+| | | 1 | 1 | 1 | |
+-->
 
 ## LEDs
-Above each of the 16 switches is a small green LED (labeled LD15 to LD0). The last five LEDs from left to right (LD4 to LD0) are each outputs to boolean logic equations based on switches SW6-SW4 (from left to right).
+
+Above each of the 16 switches is a small green LED (labeled LD15 to LD0). 
+The last five LEDs from left to right (LD4 to LD0) are each outputs to boolean logic equations based on switches SW6-SW4 (from left to right).
 
 <span style="color:red">Determine the state of each LED (on=1, off=0) for all 8 combinations of switches SW6-SW4.</span>
 
@@ -123,6 +142,7 @@ The NEXYS4 board also includes an omnidirectional MEMS microphone. This is locat
 -->
 
 # Final Pass-Off
+
 Do the pass-off in person with a TA or by video:
 
 <span style="color:green">
