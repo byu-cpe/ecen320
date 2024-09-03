@@ -5,7 +5,13 @@ title: Seven Segment
 lab: Seven_Segment
 ---
 
-In this lab you will learn what a seven-segment display is and how it works. You will create a digital circuit that drives a seven-segment display with hexadecimal characters.
+<!--
+Some differences:
+- Add buttons to top-level so that buttons can disable the segment
+-->
+
+In this lab you will learn what a seven-segment display is and how it works.
+You will create a digital circuit that drives a seven-segment display with hexadecimal characters.
 
 <span style="color:red;">The average time to complete this lab is 4 hours.</span>
 
@@ -15,19 +21,18 @@ In this lab you will learn what a seven-segment display is and how it works. You
 * Learn how to use SystemVerilog dataflow operators.
 * Learn how to validate your circuit with a testbench.
 
-# Vivado Issues - There is Help Available
-At this point in the semester, you are getting familiar with Vivado. If you are one of the unlucky ones you may have had Vivado hang when you try to simulate or synthesize. You need to learn about how to debug and fix it when that happens.
-
-The page [Taming Vivado]({% link resources/tool_resources/taming_vivado.md %}) gives detailed instructions on what to do in these cases.
-
-Go read it now. Then, read it again. Then, if you don't understand some of the things it recommends, visit with a TA before you proceed. This is IMPORTANT!
-
 # Preliminary
-The Basys 3 board contains a 4-digit, seven-segment display as shown below. This display can be used to display any information you desire, such as a counter value, register values, a timer, etc. In this week's lab you will create a circuit to drive one digit of this display. Later in the semester, we will provide you with a module to drive all of the four digits at once. It will use the display module created in this lab. You will then use that full display in a number of labs as a way to display numerical information.
+The Basys 3 board contains a 4-digit, seven-segment display as shown below. 
+This display can be used to display any information you desire, such as a counter value, register values, a timer, etc. In this week's lab you will create a circuit to drive one digit of this display. 
+Later in the semester, we will provide you with a module to drive all of the four digits at once. 
+It will use the display module created in this lab. 
+You will then use that full display in a number of labs as a way to display numerical information.
 
 <img src="{% link media/lab_01/00_four_digit_display.jpg %}" width="250">
 
-Before designing a seven-segment controller circuit, it is necessary to understand how the seven-segment display operates. As the name implies, a seven-segment display has seven discrete _segments_ that can each be individually turned on to make a variety of different characters. Each of the seven segments are labeled with a letter as shown in the image below:
+Before designing a seven-segment controller circuit, it is necessary to understand how the seven-segment display operates. 
+As the name implies, a seven-segment display has seven discrete _segments_ that can each be individually turned on to make a variety of different characters. 
+Each of the seven segments are labeled with a letter as shown in the image below:
 
 <img src="{% link media/lab_05/01_seven-segments.png %}" width="100">
 
@@ -49,7 +54,10 @@ Although any arbitrary combination of segments can be turned on, digital circuit
 
 Before you can create a circuit to display these hexadecimal characters, you need to determine the value each cathode signal needs for each character.
 
-Fill out the decoder table below so that the segment outputs on each row will display the number given by that row's hexadecimal character. Also included in this table is the binary representation of each hexadecimal character in the **D** columns. The first row of the table is completed and shows the segments that will be active for an input of **0**. Carefully look at the top entry (which will display a '0' digit) to make sure you understand.
+Fill out the decoder table below so that the segment outputs on each row will display the number given by that row's hexadecimal character. 
+Also included in this table is the binary representation of each hexadecimal character in the **D** columns. 
+The first row of the table is completed and shows the segments that will be active for an input of **0**. 
+Carefully look at the top entry (which will display a '0' digit) to make sure you understand.
 
 <!--
 Both the markdown and the html tables don't fit in a common sized browser window, so a screenshot from "powerpointExcelWord/Lab5-Seven Segment Decoder.pptx", Slide 32 is used instead.
@@ -151,15 +159,26 @@ On Learning Suite, you will only have to fill in a few sections of this table. B
 ## The Board's 7 Segments
 The seven-segment display on the Basys 3 board has _four_ unique digits as shown below.
 
-Each digit of the four-digit display has its own anode input (A0-A3). NOTE however, that there is a built-in inverter on each anode signal. Thus, to turn on any of the segments of a digit, its corresponding anode and cathode signals must both be _driven LOW_. The schematic of this four-digit, seven-segment display is shown below.
+Each digit of the four-digit display has its own anode input (A0-A3).
+NOTE however, that there is a built-in inverter on each anode signal. 
+Thus, to turn on any of the segments of a digit, its corresponding anode and cathode signals must both be _driven LOW_. 
+The schematic of this four-digit, seven-segment display is shown below.
 
 <img src="{% link media/lab_05/04_digits_diagram.JPG %}" width="850">
 
-This four-digit, seven-segment display configuration is known as a **common cathode** arrangement because the cathode signals are shared among all four digits. If more than one anode signal is asserted low, the corresponding digits will have the same segments turn on because they are connected to the same cathode signals. While this significantly reduces the pin count, it makes it difficult to display different values simultaneously. (Different values can be displayed by quickly switching between the various anode and cathode signals --- the LED's will flash so quickly your eye will see them as all being "on". This is called "time-multiplexing" the digits. You will be given a time-multiplexing seven-segment display controller to use in future laboratory assignments.)
+This four-digit, seven-segment display configuration is known as a **common cathode** arrangement because the cathode signals are shared among all four digits. 
+If more than one anode signal is asserted low, the corresponding digits will have the same segments turn on because they are connected to the same cathode signals.
+ While this significantly reduces the pin count, it makes it difficult to display different values simultaneously. 
+ (Different values can be displayed by quickly switching between the various anode and cathode signals --- the LED's will flash so quickly your eye will see them as all being "on". 
+ This is called "time-multiplexing" the digits. 
+ You will be given a time-multiplexing seven-segment display controller to use in future laboratory assignments.)
 
 For example, to turn on only the right two digits of the four digit display, AN1 and AN0 must have a logic value of **0** and the other anode signals must have a logic value of **1**.
 
-In the following example, two of the digits are turned on by setting their corresponding anode to zero. The other digits are off since their anode signals are set to one. In addition, the digit **3** is displayed based on which cathode signals have a logic **0**. The digit point is also on since the cathode signal, DP, associated with the digit point is set to **0**.
+In the following example, two of the digits are turned on by setting their corresponding anode to zero.
+ The other digits are off since their anode signals are set to one. 
+ In addition, the digit **3** is displayed based on which cathode signals have a logic **0**. 
+ The digit point is also on since the cathode signal, DP, associated with the digit point is set to **0**.
 
 <!-- FIXME: width of table too wide -->
 
@@ -190,7 +209,11 @@ In the following example, two of the digits are turned on by setting their corre
 # Exercises
 
 ## Exercise #1 - Seven-Segment SystemVerilog
-In this exercise you will create a seven-segment decoder in a SystemVerilog module. You will create the logic for just one digit. Begin by [creating a new Vivado project]({% link tutorials/lab_03/00_vivado_project_setup.md %}) like you did in the previous lab (you will create a new project for each laboratory assignment). Remember to always follow the steps in the Project Configuration section to properly configure the error messages and other settings in your project. Also remember to use the correct FPGA part number.
+In this exercise you will create a seven-segment decoder in a SystemVerilog module. 
+You will create the logic for just one digit. 
+Begin by [creating a new Vivado project]({% link tutorials/lab_03/00_vivado_project_setup.md %}) like you did in the previous lab (you will create a new project for each laboratory assignment).
+Remember to always follow the steps in the Project Configuration section to properly configure the error messages and other settings in your project. 
+Also remember to use the correct FPGA part number.
 
 After creating this project, create a new SystemVerilog file with the following module name and ports:
 
@@ -200,11 +223,14 @@ After creating this project, create a new SystemVerilog file with the following 
 | data | Input | 4 | Data input to display on the seven-segment display |
 | segment | Output | 7 | Cathode signals for seven-segment display (excluding digit point). segment[0] corresponds to CA and segment[6] corresponds to CG |
 
-Review the page on [Combinational Logic Styles]({% link resources/design_resources/combinational_logic_styles.md %}) since you are going to be required to implement each segment using a different SystemVerilog coding style. Note that for this lab you need not use `always_comb` blocks so you can skip those for now. But, you will use them in future labs so remember this page so you can go back there to review them when the time comes.
+Review the page on [Combinational Logic Styles]({% link resources/design_resources/combinational_logic_styles.md %}) since you are going to be required to implement each segment using a different SystemVerilog coding style. 
+Note that for this lab you need not use `always_comb` blocks so you can skip those for now. 
+But, you will use them in future labs so remember this page so you can go back there to review them when the time comes.
 
 Create the logic necessary for your cathode segments (CA to CG) (for this circuit, you will not create logic for the digit point (segment[7])).
 
-You are required to use a mix of combinational logic styles. For your seven segments, you must have at least one segment that uses each of the following styles:
+You are required to use a mix of combinational logic styles. 
+For your seven segments, you must have at least one segment that uses each of the following styles:
 * Structural SV (gates like in Lab 3), in non-minimized, sum-of-products form.
 * Structural SV, minimized using the theorems in Table 4.1 of the textbook.
 * Dataflow SV, using an `assign` statement and the `?:` (sometimes called the ternary) operator.
@@ -215,14 +241,16 @@ You are required to use a mix of combinational logic styles. For your seven segm
 * Behavioral SV, using an `always_comb` block, and case statements.
 -->
 
-Once you have completed the logic for your seven-segment decoder, proceed with the simulation of your module using a Tcl script. Your Tcl file should simulate all 16 possible digits to see if the output of your module matches that seven-segment decoder table you created above.
+Once you have completed the logic for your seven-segment decoder, proceed with the simulation of your module using a Tcl script. 
+Your Tcl file should simulate all 16 possible digits to see if the output of your module matches that seven-segment decoder table you created above.
 
 <span style="color:red">Include your Tcl simulation file in your report.</span>
 
 **Exercise 1 Pass-off:** Show a TA your SV code, Tcl commands and simulation.
 
 ## Exercise #2 - Verification with a Testbench
-A testbench circuit has been created for you in this lab to test your seven-segment decoder. Test your seven-segment decoder circuit using the testbench by following these steps.
+A testbench circuit has been created for you in this lab to test your seven-segment decoder. 
+Test your seven-segment decoder circuit using the testbench by following these steps.
 
 1. Download the [tb_sevensegment.v]({% link resources/testbenches/tb_sevensegment.v %}) testbench file.
 2. If needed, review the [Adding a Testbench and Simulating with a Testbench]({% link tutorials/lab_04/01_testbench_tutorial.md %}) tutorial.
@@ -244,20 +272,30 @@ Begin this exercise by creating a second SystemVerilog file with the following m
 | segment | Output | 8 | Cathode signals for seven-segment display (including digit point). segment[0] corresponds to CA and segment[6] corresponds to CG, and segment[7] corresponds to DP. |
 | anode   | Output | 4 | Anode signals for each of the four digits. |
 
-The figure below demonstrates the structure of this top-level design. You will also create some additional logic in this top-level design.
+The figure below demonstrates the structure of this top-level design. 
+You will also create some additional logic in this top-level design.
 
 <img src="{% link media/lab_05/07_seven_top_diagram.JPG %}" width="650">
 
 ### Instance Seven-Segment Decoder Module
 Begin your top-level module by instancing the seven-segment display module you created in the previous exercise.
 
-Connect the four-bit switch input ports from your top-level design to the data inputs of your seven-segment display. Connect the 7 segment bits (segment[6:0]) from your seven-segment display outputs to bits [6:0] of the top-level segment output.
+Connect the four-bit switch input ports from your top-level design to the data inputs of your seven-segment display. 
+Connect the 7 segment bits (segment[6:0]) from your seven-segment display outputs to bits [6:0] of the top-level segment output.
 
 ### Digit Point
-Your seven-segment decoder module drives seven of the eight cathode segment signals (segment[6:0]). The eighth segment signal (segment[7]) is used for the "digit point". You need to create logic to _turn on_ the digit point (DP or segment[7]). For this top-level design, we want to turn on the digit point when **btnc** is pressed. Create a logic circuit using structural SystemVerilog in your top-level module for the digit point based on the value of **btnc**. Remember that the cathode segment signals are turned on when the logic value of **0** is given.
+Your seven-segment decoder module drives seven of the eight cathode segment signals (segment[6:0]). 
+The eighth segment signal (segment[7]) is used for the "digit point". You need to create logic to _turn on_ the digit point (DP or segment[7]). 
+For this top-level design, we want to turn on the digit point when **btnc** is pressed. 
+Create a logic circuit using structural SystemVerilog in your top-level module for the digit point based on the value of **btnc**. 
+Remember that the cathode segment signals are turned on when the logic value of **0** is given.
 
 ### Anode Signals
-The last component of your top-level design is the logic to drive the anode signals. For this top-level design, you will need to create logic that turns on the right most digit (associated with anode[0]) and turn off the other three digits (anode[3:1]). To turn on the right most digit, we simply need to assign the 'anode' output with a constant value (reread above if needed to learn what constant value to use). Add a dataflow `assign` statement in your top-level SystemVerilog file to assign the anode signals such that only the right most digit is turned on. The following SystemVerilog statement can be added to set the anode signals (you will need to replace the "X" values with actual '1's or '0'):
+The last component of your top-level design is the logic to drive the anode signals. 
+For this top-level design, you will need to create logic that turns on the right most digit (associated with anode[0]) and turn off the other three digits (anode[3:1]). 
+To turn on the right most digit, we simply need to assign the 'anode' output with a constant value (reread above if needed to learn what constant value to use). 
+Add a dataflow `assign` statement in your top-level SystemVerilog file to assign the anode signals such that only the right most digit is turned on. 
+The following SystemVerilog statement can be added to set the anode signals (you will need to replace the "X" values with actual '1's or '0'):
 
 ```verilog
 assign anode = 4'bXXXX;
@@ -286,7 +324,8 @@ buf(anode[7],anode_1_7);
 Complete the [[tutorials:hierarchy_vivado_tutorial]] tutorial to learn about adding hierarchical modules in the Vivado design suite. Make sure your hierarchy is correct before proceeding to the next exercise.
 -->
 
-After completing your top-level design, simulate it to make sure your digit point (DP) logic and your anode logic is correct. Also, simulate all possible data inputs to verify your top-level circuit is working properly.
+After completing your top-level design, simulate it to make sure your digit point (DP) logic and your anode logic is correct. 
+Also, simulate all possible data inputs to verify your top-level circuit is working properly.
 
 <span style="color:red">
 Paste your top-level module SystemVerilog code.
@@ -302,7 +341,9 @@ Attach a screenshot of your working simulation waveform to Learning Suite.
 <!-- do we want to have them look at the elaborated design pre-synthesis? */
 /* [[tutorials:viewing_design_elaboration]] -->
 
-Begin this process by [creating]({% link tutorials/lab_03/05_making_an_xdc_file.md %}) and [adding]({% link tutorials/lab_03/06_adding_an_xdc_file.md %}) an XDC constraints file. Do this like you have done in previous labs. Remember, the easiest way to create this file is to start with the [master .xdc]({% link resources/design_resources/basys3_220.xdc %}) file and modify it.
+Begin this process by [creating]({% link tutorials/lab_03/05_making_an_xdc_file.md %}) and [adding]({% link tutorials/lab_03/06_adding_an_xdc_file.md %}) an XDC constraints file. 
+Do this like you have done in previous labs.
+ Remember, the easiest way to create this file is to start with the [master .xdc]({% link resources/design_resources/basys3_220.xdc %}) file and modify it.
 
 Once you have the XDC file added to your project, [synthesize]({% link tutorials/lab_03/07_synthesis.md %}) your project.
 

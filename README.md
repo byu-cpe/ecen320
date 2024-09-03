@@ -21,6 +21,14 @@ This section summarizes the different versions of the lab pages to make it easie
 
 ### Winter 2024
 
+* [Lab 1 - Introduction to Basys3 Board](https://github.com/byu-cpe/ecen320/blob/winter25/_labs/lab_01.md)
+* [Lab 2 - Vivado Synthesis Tools](https://github.com/byu-cpe/ecen320/blob/winter25/_labs/lab_02.md)
+* [Lab 3 - Structural Verilog](https://github.com/byu-cpe/ecen320/blob/winter25/_labs/lab_03.md)
+* [Lab 4 - Arithmetic](https://github.com/byu-cpe/ecen320/blob/winter25/_labs/lab_04.md)
+* [Lab 5 - Seven Segment Display](https://github.com/byu-cpe/ecen320/blob/winter25/_labs/lab_05.md)
+
+Differences from ECEN 220:
+* Drop lab 0 (lab orientation) and combine it with the introduction of the Basys3 board
 
 ### Initial Copy from ECEN 220
 

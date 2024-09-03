@@ -1,9 +1,13 @@
 ---
 layout: page
 toc: true
-title: Structural SV
+title: Structural SystemVerilog
 lab: Structural_SV
 ---
+
+<!--
+Basically keep this the same. The synthesis and download process should be familiar. Instead, focus on simulation and design.
+-->
 
 In this lab you will implement several logic functions using the SystemVerilog **HDL** (Hardware Description Language). You will simulate your SystemVerilog designs using commercial simulation tools and synthesize them into circuits. You will then download the resulting circuit data onto the Basys 3 board so you can test your design in hardware.
 

@@ -7,7 +7,8 @@ lab: Registers
 
 **Originally written by Prof Brent Nelson**
 
-In this lab you will do some experimentation with flip-flops to learn how they operate. You will create a single-bit loadable register, a 4-bit loadable register, and a counter.
+In this lab you will do some experimentation with flip-flops to learn how they operate.
+You will create a single-bit loadable register, a 4-bit loadable register, and a counter.
 
 Here is a video intro to the lab:
 <iframe width="768" height="432" src="https://www.youtube.com/embed/MIE5j9WLap8?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -20,7 +21,11 @@ Here is a video intro to the lab:
 * Create a clearable, incrementable 4-bit counter
 
 # Preliminary
-The Artix-7 FPGA we are using has built-in flip-flops that you can use to make sequential circuits. You will use FDCE flip-flop **primitives** to construct a few simple register-type circuits. The FDCE flip-flop is available to you without any extra work required on your part, you merely need to instance it into your design the same way you instance your own modules into your designs. Refer to the following pdf file to learn about the FDCE module, its ports, and how to instance the module in your SystemVerilog.
+
+The Artix-7 FPGA we are using has built-in flip-flops that you can use to make sequential circuits.
+You will use FDCE flip-flop **primitives** to construct a few simple register-type circuits. 
+The FDCE flip-flop is available to you without any extra work required on your part, you merely need to instance it into your design the same way you instance your own modules into your designs. 
+Refer to the following pdf file to learn about the FDCE module, its ports, and how to instance the module in your SystemVerilog.
 
 [fdce.pdf]({% link media/lab_06/00_fdce.pdf %})
 
@@ -29,12 +34,16 @@ The SystemVerilog example below demonstrates how to instance a single FDCE flip-
 FDCE my_ff (.Q(ff_output), .C(CLK), .CE(1'b1), .CLR(1'b0), .D(ff_input));
 ```
 
-The example shown above assigns a constant zero to the CLR input and a constant one to the clock enable (CE) since we will not use those functions. As a result, what you are getting is basically a D flip-flop with input D, output Q and a clock C. NOTE: this is a rising edge triggered flip-flop.
+The example shown above assigns a constant zero to the CLR input and a constant one to the clock enable (CE) since we will not use those functions. 
+As a result, what you are getting is basically a D flip-flop with input D, output Q and a clock C. NOTE: this is a rising edge triggered flip-flop.
 
 # Exercises
 
 ## Exercise #1 - 1-Bit Register
-For this exercise you will create a 1-bit register. It is exactly the circuit in Figure 16.4 in the textbook. Begin this exercise by creating a new Vivado project and an empty SystemVerilog module with the following name and ports.
+
+For this exercise you will create a 1-bit register. 
+It is exactly the circuit in Figure 16.4 in the textbook. 
+Begin this exercise by creating a new Vivado project and an empty SystemVerilog module with the following name and ports.
 
 | Module Name: FunRegister |
 | Port Name | Direction | Width | Function |

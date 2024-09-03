@@ -9,31 +9,60 @@ In this lab you will familiarize yourself with digital numbers, digital systems,
 
 <span style="color:red;">The average time to complete this lab is 1 hour.</span>
 
+<!-- Things to do:
+- It is possible the defaut configuration has changed. Do the following:
+  - Provide an easy way for students to tell whether it has changed or not
+  - Provide instrutions on how to reload the default bitstream if it has changed
+- Add more digital logic exercises
+  - Have a multiple choice on what each of the LEDs do (additional LEDs)
+- Add something with VGA (perhaps binary colors for the entire screen: rgb to color)
+  - Colors are based on the switch values (no matter what the buttons are)
+  - When the buttons are pressed, something different happens to the screen (invert?)
+  - Have them set four ASCII values in the switches and display the ASCII value on the screen. When they specify a specific 'code', hace the screen put some sort of answer key.
+- Add a Putty/UART activity
+  - Place ASCII characters on switches and send over with a button press
+  - Characters typed on putty show up on 7 segment display
+  - Characters show up on the screen?
+- Instructions for downloading bitfiles in several different ways: openocd, adept, hwmanager
+- Other ideas:
+  - Some sort of timer activity, wack a mole score?
+
+GitHub submission ideas:
+- Text file that includes all the answers to the lab questions.
+Preliminary ideas:
+- Read about the Basys3 board and answer questions
+Other lab ideas:
+- Lots of github tutorials to learn how to submit and use Github
+-->
+
+
 # Learning Outcomes
-* Become familiar with the lab FPGA board.
+
+* Become familiar with the BASYS3 FPGA board and the process of downloading a bit file to the board.
 * Learn about simple logic equations, binary numbers, and applications of digital systems.
 
 # Exercise #1 - Introduction to the Basys 3 Development Board
 
 During the course of the semester you will build various digital systems using digital logic. 
 You will complete these using the **[Basys 3](https://reference.digilentinc.com/reference/programmable-logic/basys-3/start)** development board. 
-You will be using this board throughout the semester so it is important to familiarize yourself with the board and learn how to use it. 
+You will be using this board throughout the semester and it is important for you to familiarize yourself with the board and learn how to use it. 
 In this exercise, you will use the Basys 3 development board to explore a variety of digital system functions.
-
 A picture of this board is shown below -- you should have purchased your own board for use in this class.
 
 ![](https://reference.digilentinc.com/_media/reference/programmable-logic/basys-3/basys-3-2.png)
 
 In the center of this board is an **Integrated Circuit** (IC) device called a **Field Programmable Gate Array** or FPGA (this is the square device labeled **ARTIX-7**). 
 This FPGA device is the heart of the board and contains the programmable digital logic that you will use in most of your lab exercises. 
-An FPGA device is a programmable digital circuit that can be configured to perform many different functions based on the user's digital design. 
+An FPGA device is a programmable digital circuit that can be configured to perform different functions based on the user's digital design. 
 You will be creating digital circuit designs during the semester and placing these circuits onto the FPGA device. 
 The circuit that is configured onto the FPGA is defined in a file called a **bitstream**. 
 These files are created by software from the manufacturer of the FPGA. You will be creating your own circuit bitstreams throughout the semester, but not in this lab.
 
-The following page contains a video giving an overview of this Basys 3 board: [Overview of the Basys 3 Board]({% link tutorials/lab_01/03_basys3.md %}). Watch the video.
+The following page contains a video giving an overview of this Basys 3 board: [Overview of the Basys 3 Board]({% link tutorials/lab_01/03_basys3.md %}). 
+Watch the video.
 
-Now, check to make sure the blue jumpers are set as shown in the [Basys 3 jumpers tutorial]({% link tutorials/lab_01/04_setting_up_the_basys3_jumpers.md %}). If they aren't, correct them.
+Now, check to make sure the blue jumpers are set as shown in the [Basys 3 jumpers tutorial]({% link tutorials/lab_01/04_setting_up_the_basys3_jumpers.md %}). 
+If they aren't, correct them.
 
 <span style="color:red">What is the proper jumper setting of Jumper JP2?</span><br>
 (You'll have to look closely at the board to find which one is JP2.)
@@ -63,7 +92,8 @@ What does “FPGA” stand for?
 # Exercise #2 - Digital Logic and Binary Numbers
 
 In this next exercise, you will configure the FPGA with a different circuit. 
-To use and experiment with this new circuit, you need to load [this configuration, or bit, file]({% link resources/example_bitfiles/basys3byuuserdemo.bit %}) onto the FPGA. You will be loading bit files on the the FPGA for **every** lab each week. 
+To use and experiment with this new circuit, you need to load [this configuration, or bit, file]({% link resources/example_bitfiles/basys3byuuserdemo.bit %}) onto the FPGA. 
+You will be loading bit files on the FPGA for most labs each week. 
 You will be creating your own bit files in future lab assignments from the circuits you design.
 
 In this case, download the above bitfile onto your computer using whatever mechanism your browser supports.
@@ -79,7 +109,8 @@ The Basys 3 board has a 4-digit seven-segment display. You will create a circuit
 
 ![]({% link media/lab_01/00_four_digit_display.jpg %})
 
-Press different buttons on the board to see what happens to this display. When none of the buttons are pressed, the display on the right-most digit is determined by the settings of the first four switches (SW3-SW0).
+Press different buttons on the board to see what happens to this display. 
+When none of the buttons are pressed, the display on the right-most digit is determined by the settings of the first four switches (SW3-SW0).
 
 <span style="color:red">Determine the value of the digit for all 16 combinations of switches SW3-SW0.</span>
 
