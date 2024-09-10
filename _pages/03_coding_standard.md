@@ -5,6 +5,27 @@ toc: true
 icon: fas fa-check
 ---
 
+<!--
+
+
+A few comments on BYU’s coding guidelines: https://ecen220wiki.groups.et.byu.net/03-coding-standard/
+ 
+I strongly disagree with R5. `default nettype none was one of the worst “enhancements” to Verilog 2001. Once you add this line of code, any other module that you compile after this file will give errors if it did not include wire declarations for every signal and for most inputs. This is a good way to kill backward compatibility with third party modules compiled into your design. R5 is a terrible recommendation, and I would be happy to debate it with BYU profs.
+ 
+R6 – I use either input signame (wire is the default) or input logic signame. I tell engineers, use logic for everything unless you have multiple drivers, then use the wire type. The wire type allows resolution of multiple drivers. I tell engineers that logic is their near-universal RTL data type. Nobody that I know uses input wire logic. Logic is roughly equivalent to std_ulogic while wire is roughly equivalent to std_logic in VHDL.
+ 
+R19 is a bad recommendation. Synthesis typically works best if modules have registered outputs. Combinational outputs use part of the next cycle, which makes it harder to meet timing in the receiving block. I teach 7 different FSM coding styles and 6 of them have registered outputs.
+ 
+R20 I would like to see more fully what BYU recommends for FSM design.
+ 
+R22 – Camel case (correct). Underscores between words is called snake-case. Google “software snake-case”
+ 
+R23 - is not done in industry. We use all lowercase for module names and R2 is absolutely correct (match filename to module name) so that we can automatically pick up referenced module-files while compiling.
+ 
+R23 – we generally use upper case for both macro definitions and parameters. Macros in the code have a leading ` and parameters do not.
+
+-->
+
 **HDL**s (Hardware Description Languages) like SystemVerilog can be difficult to understand. To make SystemVerilog code more readable and maintainable, you are required to follow coding standards. These standards are explained below. Each *and every* lab will be graded against this coding standard.
 
 # Files
