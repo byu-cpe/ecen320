@@ -5,7 +5,8 @@ title: Tutorials
 icon: fas fa-chalkboard-teacher
 ---
 
-This page contains an index to all of the tutorials in each of the labs. You will likely need to refer to these tutorials more than once as you complete the labs in the class.
+This page contains an index to the tutorials in each of the labs.
+You will likely need to refer to these tutorials more than once as you complete the labs in the class.
 
 # Lab Getting Started
 * [Creating a CAEDM Account]({% link tutorials/lab_01/00_creating_a_caedm_account.md %})
